@@ -1,8 +1,8 @@
 name: Go
 on:
- push:
-   branches:
-     - 'main'
+  push:
+    branches:
+      - "main"
 
 permissions:
   packages: write
@@ -16,7 +16,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.22.x'
+          go-version: "1.22.x"
       - name: Install dependencies
         run: go get .
       - name: Build
@@ -48,4 +48,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/dreamsofcode-io/guestbook:prod
+          tags: ghcr.io/popoiuioopp/guestbook:prod
