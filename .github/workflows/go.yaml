@@ -38,11 +38,9 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Set short git commit SHA
+      - name: Set Image Tag
         id: vars
-        run: |
-          calculatedSha=$(git rev-parse --short ${{ github.sha }})
-          echo "COMMIT_SHORT_SHA=$calculatedSha" >> $GITHUB_ENV
+        run: echo "IMAGE_TAG=prod-${GITHUB_SHA::8}" >> $GITHUB_ENV
 
       - name: Log in to the Container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
@@ -56,5 +54,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/popoiuioopp/guestbook:prod
+          tags: |
+            ghcr.io/popoiuioopp/guestbook:${{ env.IMAGE_TAG }}
+            ghcr.io/popoiuioopp/guestbook:latest
           platforms: linux/amd64,linux/arm64,linux/arm/v7
