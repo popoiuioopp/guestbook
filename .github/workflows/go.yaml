@@ -56,5 +56,5 @@ jobs:
           push: true
           tags: |
             ghcr.io/popoiuioopp/guestbook:${{ env.IMAGE_TAG }}
-            ghcr.io/popoiuioopp/guestbook:latest
+            ghcr.io/popoiuioopp/guestbook:prod
           platforms: linux/amd64,linux/arm64,linux/arm/v7
